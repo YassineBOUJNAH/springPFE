@@ -1,14 +1,16 @@
 package com.entreprise.projet.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Utilisateur {
-    @Id
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Utilisateur implements Serializable {
+
+private static final long serialVersionUID = 1L;
+
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
@@ -26,12 +28,26 @@ public class Utilisateur {
     private String frstname;
     private String lastname;
     private String address;
-    private String city;
-    private String country;
-    private String codepostale;
+    private String phone;
+	private String sexe;
 
+	public String getPhone() {
+		return phone;
+	}
 
-    public String getEmail() {
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+
+	public String getEmail() {
 		return email;
 	}
 
@@ -63,36 +79,12 @@ public class Utilisateur {
 		this.address = address;
 	}
 
-	public String getCity() {
-		return city;
-	}
 
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getCodepostale() {
-		return codepostale;
-	}
-
-	public void setCodepostale(String codepostale) {
-		this.codepostale = codepostale;
-	}
 
 	public Utilisateur() {
     }
-    
-  public Utilisateur(Long id, String username, String password, String role, String email, String frstname,
-			String lastname, String address, String city, String country, String codepostale) {
-		super();
+
+	public Utilisateur(Long id, String username, String password, String role, String email, String frstname, String lastname, String address, String phone, String sexe) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -101,12 +93,11 @@ public class Utilisateur {
 		this.frstname = frstname;
 		this.lastname = lastname;
 		this.address = address;
-		this.city = city;
-		this.country = country;
-		this.codepostale = codepostale;
+		this.phone = phone;
+		this.sexe = sexe;
 	}
 
-public Utilisateur(String username, String password, String role) {
+	public Utilisateur(String username, String password, String role) {
     super();
     this.username = username;
     this.password = password;
