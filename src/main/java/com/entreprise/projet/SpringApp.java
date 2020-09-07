@@ -17,6 +17,9 @@ public class SpringApp {
 
 	@Autowired	
 	private UserRepository urepository;
+
+	@Autowired
+	private AdminRepo adminRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApp.class, args);
@@ -35,7 +38,10 @@ public class SpringApp {
 			
 			urepository.save(new Student("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "CLIENT","dd"));
 			urepository.save(new Student("admin","$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42" , "ADMIN","dd"));
-
+			adminRepo.save(new Admin("hicham", "boujnah", "email", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42"));
+			adminRepo.save(new Admin("ilyass", "talhi", "email", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42"));
+			//just a test
+			adminRepo.findAll().forEach(admin -> System.out.println("Name: " + admin.getFirstName() +" "+admin.getLastName()));
 		};
 	}	
 }
