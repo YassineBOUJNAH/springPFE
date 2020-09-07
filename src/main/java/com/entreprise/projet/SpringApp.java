@@ -18,8 +18,6 @@ public class SpringApp {
 	@Autowired	
 	private UserRepository urepository;
 
-	@Autowired
-	private AdminRepo adminRepo;
 
 	@Autowired
 	private internshipRepository internRep ;
@@ -39,12 +37,9 @@ public class SpringApp {
 			repository.save(new Car("Nissan", "Leaf", "White", "SSJ-3002", 2014, 29000, owner2));
 			repository.save(new Car("Toyota", "Prius", "Silver", "KKO-0212", 2018, 39000, owner2));
 			
-			urepository.save(new Student("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "CLIENT","dd"));
-			urepository.save(new Student("admin","$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42" , "ADMIN","dd"));
-			adminRepo.save(new Admin("hicham", "boujnah", "email", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42"));
-			adminRepo.save(new Admin("ilyass", "talhi", "email", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42"));
-			//just a test
-			adminRepo.findAll().forEach(admin -> System.out.println("Name: " + admin.getFirstName() +" "+admin.getLastName()));
+			urepository.save(new Student("user", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT","dd"));
+			urepository.save(new Utilisateur("admin","$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42" , "ADMIN"));
+			urepository.save(new Supervisor("supervisor", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR","dd"));
 
 		};
 	}	
