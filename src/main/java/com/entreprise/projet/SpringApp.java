@@ -16,7 +16,7 @@ public class SpringApp {
 	private OwnerRepository orepository;
 
 	@Autowired	
-	private UserRepository urepository;	
+	private UserRepository urepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApp.class, args);
