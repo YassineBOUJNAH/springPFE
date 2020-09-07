@@ -22,6 +22,10 @@ public class InternshipOffer {
     @JoinColumn(name = "student")
     private Student student;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "admin")
+    private Admin admin;
+
 
     public InternshipOffer() {
     }
