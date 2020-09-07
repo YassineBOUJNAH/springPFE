@@ -52,4 +52,14 @@ public class report {
     public Long getId() {
         return id;
     }
+    @Override
+    public String toString() {
+        return "report{" +
+                "id=" + id +
+                ", version='" + version + '\'' +
+                ", content='" + content + '\'' +
+                ", internship=" + internship +
+                '}';
+    }
+
 }

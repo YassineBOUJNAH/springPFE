@@ -25,11 +25,11 @@ public class Internship {
     private Date lasttdate ;
 
 
-    @OneToMany(mappedBy = "Internship" , cascade = CascadeType.ALL )
+    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL )
     @JsonIgnore
     private List<report> reportList ;
 
-    @OneToMany(mappedBy = "Intership" , cascade = CascadeType.ALL )
+    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL )
     @JsonIgnore
     private List<meeting> meetingtList ;
 
@@ -88,4 +88,18 @@ public class Internship {
     }
 
     public Long getId() { return id; }
+
+    @Override
+    public String toString() {
+        return "Internship{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", Entreprise='" + Entreprise + '\'' +
+                ", description='" + description + '\'' +
+                ", startdate=" + startdate +
+                ", lasttdate=" + lasttdate +
+                ", reportList=" + reportList +
+                ", meetingtList=" + meetingtList +
+                '}';
+    }
 }

@@ -61,4 +61,15 @@ public class meeting {
     public void setPlace(@NonNull String place) {
         this.place = place;
     }
+
+    @Override
+    public String toString() {
+        return "meeting{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", place='" + place + '\'' +
+                ", internship=" + internship +
+                '}';
+    }
 }

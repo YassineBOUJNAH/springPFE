@@ -20,6 +20,9 @@ public class SpringApp {
 
 	@Autowired
 	private AdminRepo adminRepo;
+
+	@Autowired
+	private internshipRepository internRep ;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApp.class, args);
@@ -42,6 +45,7 @@ public class SpringApp {
 			adminRepo.save(new Admin("ilyass", "talhi", "email", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42"));
 			//just a test
 			adminRepo.findAll().forEach(admin -> System.out.println("Name: " + admin.getFirstName() +" "+admin.getLastName()));
+
 		};
 	}	
 }
