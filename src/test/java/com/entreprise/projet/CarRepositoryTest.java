@@ -36,6 +36,6 @@ public class CarRepositoryTest {
 		
 		repository.deleteAll();
 		assertThat(repository.findAll()).isEmpty();
-	}	
+ 	}
 
 }
