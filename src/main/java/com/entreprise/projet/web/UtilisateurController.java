@@ -1,9 +1,11 @@
 package com.entreprise.projet.web;
 
+import com.entreprise.projet.domain.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.entreprise.projet.domain.UserRepository;
@@ -27,5 +29,10 @@ public class UtilisateurController{
 		newUser.setPassword(password);
 		return repository.save(newUser);
 		
+	}
+
+	@RequestMapping("/users")
+	public Iterable<Utilisateur> getUsers() {
+		return repository.findAll();
 	}
 }
