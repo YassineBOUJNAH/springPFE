@@ -36,13 +36,13 @@ public class Internship {
     private Student student ;
 
     //reports list
-    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
     @JsonIgnore
     private List<report> reportList ;
 
     //meetings list
 
-    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
     @JsonIgnore
     private List<meeting> meetingtList ;
 
