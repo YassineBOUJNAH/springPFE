@@ -84,8 +84,8 @@ private static final long serialVersionUID = 1L;
 	public Utilisateur() {
     }
 
-	public Utilisateur(Long id, String username, String password, String role, String email, String frstname, String lastname, String address, String phone, String sexe) {
-		this.id = id;
+	public Utilisateur( String username, String password, String role, String email, String frstname, String lastname, String address, String phone, String sexe) {
+
 		this.username = username;
 		this.password = password;
 		this.role = role;

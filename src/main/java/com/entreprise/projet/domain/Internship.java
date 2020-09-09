@@ -24,12 +24,25 @@ public class Internship {
     @Column(nullable = false)
     private Date lasttdate ;
 
+    //supervisor
 
-    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL )
+    @ManyToOne
+    @JoinColumn(name ="supervisor_id" , referencedColumnName = "id")
+    private Supervisor supervisor ;
+
+    //student
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "student_id" , referencedColumnName = "id")
+    private Student student ;
+
+    //reports list
+    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     @JsonIgnore
     private List<report> reportList ;
 
-    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL )
+    //meetings list
+
+    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     @JsonIgnore
     private List<meeting> meetingtList ;
 
@@ -101,5 +114,38 @@ public class Internship {
                 ", reportList=" + reportList +
                 ", meetingtList=" + meetingtList +
                 '}';
+    }
+
+   public void addReport(report rep){
+       reportList.add(rep) ;
+
+   }
+
+   public void addMeeting(meeting met) {
+        meetingtList.add(met) ;
+   }
+
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public List<report> getReportList() {
+        return reportList;
+    }
+
+    public List<meeting> getMeetingtList() {
+        return meetingtList;
     }
 }

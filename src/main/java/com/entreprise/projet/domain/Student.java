@@ -2,10 +2,7 @@ package com.entreprise.projet.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,10 +11,33 @@ public class Student extends Utilisateur{
     private static final long serialVersionUID = 1L;
 
     private String cne;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="student")
+
+    //intership_offer
+
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<InternshipOffer> internshipOffers;
 
+    //student_intership
+
+    @OneToOne(mappedBy = "student",cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    private Internship internship;
+
+    public List<InternshipOffer> getInternshipOffers() {
+        return internshipOffers;
+    }
+
+    public void setInternshipOffers(List<InternshipOffer> internshipOffers) {
+        this.internshipOffers = internshipOffers;
+    }
+
+    public Internship getInternship() {
+        return internship;
+    }
+
+    public void setInternship(Internship internship) {
+        this.internship = internship;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -34,8 +54,8 @@ public class Student extends Utilisateur{
     public Student() {
     }
 
-    public Student(Long id, String username, String password, String role, String email, String frstname, String lastname, String address, String phone, String sexe, String cne) {
-        super(id, username, password, role, email, frstname, lastname, address, phone, sexe);
+    public Student(String username, String password, String role, String email, String frstname, String lastname, String address, String phone, String sexe, String cne) {
+        super(username, password, role, email, frstname, lastname, address, phone, sexe);
         this.cne = cne;
     }
 
