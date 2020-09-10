@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Date;
+
 @SpringBootApplication
 public class SpringApp {
 	@Autowired	
@@ -21,6 +23,12 @@ public class SpringApp {
 
 	@Autowired
 	private internshipRepository internRep ;
+
+	@Autowired
+	private StudentRepo studentRepo ;
+
+	@Autowired
+	private SupervisorRepo supervisorRepo ;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApp.class, args);
@@ -30,6 +38,7 @@ public class SpringApp {
 	CommandLineRunner runner() {
 		return args -> {
 			Owner owner1 = new Owner("John" , "Johnson");
+
 			Owner owner2 = new Owner("Mary" , "Robinson");
 			orepository.save(owner1);
 			orepository.save(owner2);
@@ -38,8 +47,25 @@ public class SpringApp {
 			repository.save(new Car("Toyota", "Prius", "Silver", "KKO-0212", 2018, 39000, owner2));
 			
 			urepository.save(new Student("user", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT","dd"));
-			urepository.save(new Utilisateur("admin","$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42" , "ADMIN"));
-			urepository.save(new Supervisor("supervisor", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR","dd"));
+		//	urepository.save(new Utilisateur("admin","$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42" , "ADMIN"));
+			urepository.save(new Supervisor("supervi", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR","dd"));
+
+			//Internship
+			Student student = new Student("student", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "tt","gz","sj","jz","jz","hz","dd") ;
+			Supervisor supervisor = new Supervisor("supervisor", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR" , "tt","gz","sj","jz","jz","hz","dd");
+
+			studentRepo.save(student);
+			supervisorRepo.save(supervisor);
+
+           //this will be performed by the admin
+			Internship internship = new Internship("title","entreprise","description",new Date(),new Date());
+
+			internship.setStudent(student);
+			internship.setSupervisor(supervisor);
+
+			internRep.save(internship);
+
+
 
 		};
 	}	

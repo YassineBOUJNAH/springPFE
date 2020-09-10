@@ -18,7 +18,7 @@ public class report {
     private String content ;
 
     @ManyToOne(fetch = FetchType.LAZY )
-    @JoinColumn(name="internship_id", nullable=false)
+    @JoinColumn(name="internship_id", nullable=false )
     private Internship internship ;
 
     public report () {

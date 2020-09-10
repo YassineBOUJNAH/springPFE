@@ -14,13 +14,13 @@ public class Student extends Utilisateur{
 
     //intership_offer
 
-    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER )
     @JsonIgnore
     private List<InternshipOffer> internshipOffers;
 
     //student_intership
 
-    @OneToOne(mappedBy = "student",cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "student" , fetch = FetchType.EAGER )
     private Internship internship;
 
     public List<InternshipOffer> getInternshipOffers() {
@@ -39,9 +39,7 @@ public class Student extends Utilisateur{
         this.internship = internship;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
+    public static long getSerialVersionUID() { return serialVersionUID;  }
 
     public String getCne() {
         return cne;

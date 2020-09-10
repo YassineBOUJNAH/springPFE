@@ -38,7 +38,7 @@ public class InternshipRepositoryTest {
         internship.setStudent(student);
         internship.setSupervisor(supervisor);
 
-        supervisor.addIntership(internship);
+
 
 
 

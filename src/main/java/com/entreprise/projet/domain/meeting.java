@@ -19,7 +19,7 @@ public class meeting {
     @NonNull
     private String place ;
 
-    @ManyToOne(fetch = FetchType.LAZY )
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="internship_id", nullable=false)
     private Internship internship ;
 
