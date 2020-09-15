@@ -1,6 +1,10 @@
 package com.entreprise.projet.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -9,10 +13,6 @@ public class Supervisor extends Utilisateur{
     private static final long serialVersionUID = 1L;
 
     private String speciality;
-
-    @OneToMany(mappedBy = "supervisor" , orphanRemoval = true , fetch = FetchType.EAGER)
-    private List<Internship> internships ;
-
 
     public Supervisor() {
 
@@ -34,10 +34,6 @@ public class Supervisor extends Utilisateur{
 
     public void setSpeciality(String speciality) {
         this.speciality = speciality;
-    }
-
-    public void addIntership(Internship intern){
-        internships.add(intern);
     }
 
 }

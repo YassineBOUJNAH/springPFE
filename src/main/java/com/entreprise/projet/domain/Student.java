@@ -3,6 +3,7 @@ package com.entreprise.projet.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,33 +12,6 @@ public class Student extends Utilisateur{
     private static final long serialVersionUID = 1L;
 
     private String cne;
-
-    //intership_offer
-
-    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER )
-    @JsonIgnore
-    private List<InternshipOffer> internshipOffers;
-
-    //student_intership
-
-    @OneToOne(mappedBy = "student" , fetch = FetchType.EAGER )
-    private Internship internship;
-
-    public List<InternshipOffer> getInternshipOffers() {
-        return internshipOffers;
-    }
-
-    public void setInternshipOffers(List<InternshipOffer> internshipOffers) {
-        this.internshipOffers = internshipOffers;
-    }
-
-    public Internship getInternship() {
-        return internship;
-    }
-
-    public void setInternship(Internship internship) {
-        this.internship = internship;
-    }
 
     public static long getSerialVersionUID() { return serialVersionUID;  }
 

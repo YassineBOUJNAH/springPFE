@@ -17,7 +17,7 @@ import com.entreprise.projet.domain.Utilisateur;
 @Controller
 public class SecurityController {
 	
-	@Autowired	
+	@Autowired
 	private UserRepository urepository;	
  
     @RequestMapping(value = "/Current", method = RequestMethod.GET)

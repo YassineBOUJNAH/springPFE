@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        // Filter for other requests to check JWT in header
 	        .addFilterBefore(new AuthenticationFilter(),
 	                UsernamePasswordAuthenticationFilter.class);
+
 	  }
 
 	  @Bean

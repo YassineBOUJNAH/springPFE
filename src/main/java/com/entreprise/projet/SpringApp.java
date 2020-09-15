@@ -47,7 +47,7 @@ public class SpringApp {
 			repository.save(new Car("Toyota", "Prius", "Silver", "KKO-0212", 2018, 39000, owner2));
 			
 			urepository.save(new Student("user", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT","dd"));
-		//	urepository.save(new Utilisateur("admin","$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42" , "ADMIN"));
+			urepository.save(new Utilisateur("admin","$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42" , "ADMIN"));
 			urepository.save(new Supervisor("supervi", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR","dd"));
 
 			//Internship
@@ -57,14 +57,13 @@ public class SpringApp {
 			studentRepo.save(student);
 			supervisorRepo.save(supervisor);
 
-           //this will be performed by the admin
+           //this task will be performed by the admin
 			Internship internship = new Internship("title","entreprise","description",new Date(),new Date());
 
 			internship.setStudent(student);
 			internship.setSupervisor(supervisor);
 
 			internRep.save(internship);
-
 
 
 		};
