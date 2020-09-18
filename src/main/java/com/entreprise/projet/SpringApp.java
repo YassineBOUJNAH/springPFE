@@ -59,11 +59,18 @@ public class SpringApp {
 
            //this task will be performed by the admin
 			Internship internship = new Internship("title","entreprise","description",new Date(),new Date());
+			Internship internship2 = new Internship("title","entreprise","description",new Date(),new Date());
 
 			internship.setStudent(student);
 			internship.setSupervisor(supervisor);
 
-			internRep.save(internship);
+			internship2.setSupervisor(supervisor);
+			internship2.setStudent(student);
+
+
+
+			internRep.save(internship) ;
+			internRep.save(internship2) ;
 
 
 		};
