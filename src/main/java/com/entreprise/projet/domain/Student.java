@@ -13,6 +13,13 @@ public class Student extends Utilisateur{
 
     private String cne;
 
+    //@OneToMany(targetEntity = InternshipOffer.class,cascade = CascadeType.ALL, mappedBy = "student")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
+    @JsonIgnore
+    private List<InternshipOffer> internshipOffers;
+    //@JoinColumn(name ="internOffer",referencedColumnName = "id")
+
+
     public static long getSerialVersionUID() { return serialVersionUID;  }
 
     public String getCne() {
@@ -21,6 +28,14 @@ public class Student extends Utilisateur{
 
     public void setCne(String cne) {
         this.cne = cne;
+    }
+
+    public List<InternshipOffer> getInternshipOffers() {
+        return internshipOffers;
+    }
+
+    public void setInternshipOffers(List<InternshipOffer> internshipOffers) {
+        this.internshipOffers = internshipOffers;
     }
 
     public Student() {

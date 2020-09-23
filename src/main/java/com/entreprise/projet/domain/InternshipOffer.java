@@ -1,6 +1,7 @@
 package com.entreprise.projet.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class InternshipOffer {
@@ -19,8 +20,23 @@ public class InternshipOffer {
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "student")
+    @JoinColumn(name = "student", referencedColumnName = "id")
     private Student student;
+
+    public InternshipOffer(String title, String entreprise, String state, String description) {
+        this.title = title;
+        this.entreprise = entreprise;
+        this.state = state;
+        this.description = description;
+    }
+
+    public InternshipOffer(String title, String entreprise, String state, String description, Student student) {
+        this.title = title;
+        this.entreprise = entreprise;
+        this.state = state;
+        this.description = description;
+        this.student = student;
+    }
 
     public InternshipOffer() {
     }
@@ -63,5 +79,13 @@ public class InternshipOffer {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

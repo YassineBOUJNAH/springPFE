@@ -29,6 +29,9 @@ public class SpringApp {
 
 	@Autowired
 	private SupervisorRepo supervisorRepo ;
+
+	@Autowired
+	private InternshipOfferRepo internshipOfferRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApp.class, args);
@@ -65,6 +68,9 @@ public class SpringApp {
 
 			internRep.save(internship);
 
+			//Internship offer
+			InternshipOffer internshipOffer = new InternshipOffer("Stage AI","IBM","in_progress","this is a description", student);
+			internshipOfferRepo.save(internshipOffer);
 
 		};
 	}	
