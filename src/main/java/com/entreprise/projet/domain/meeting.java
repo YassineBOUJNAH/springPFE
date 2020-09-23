@@ -3,7 +3,6 @@ package com.entreprise.projet.domain;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class meeting {
@@ -15,20 +14,31 @@ public class meeting {
     @NonNull
     private String description ;
     @NonNull
-    private Date date ;
+    private String date ;
+    @NonNull
+    private String time ;
     @NonNull
     private String place ;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="internship_id", nullable=false)
-    private Internship internship ;
 
-    public meeting(@NonNull String description, @NonNull Date date, @NonNull String place) {
+
+    public meeting(@NonNull String description, @NonNull String date, @NonNull String time, @NonNull String place) {
         this.description = description;
         this.date = date;
+        this.time = time;
         this.place = place;
     }
+
     public meeting() {
+    }
+
+    @NonNull
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(@NonNull String time) {
+        this.time = time;
     }
 
     public Long getId() {
@@ -45,11 +55,11 @@ public class meeting {
     }
 
     @NonNull
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(@NonNull Date date) {
+    public void setDate(@NonNull String date) {
         this.date = date;
     }
 
@@ -69,7 +79,6 @@ public class meeting {
                 ", description='" + description + '\'' +
                 ", date=" + date +
                 ", place='" + place + '\'' +
-                ", internship=" + internship +
                 '}';
     }
 }

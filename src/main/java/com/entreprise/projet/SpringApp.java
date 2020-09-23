@@ -61,12 +61,18 @@ public class SpringApp {
 			supervisorRepo.save(supervisor);
 
            //this task will be performed by the admin
-			Internship internship = new Internship("title","entreprise","description",new Date(),new Date());
+			Internship internship = new Internship("title","entreprise","description", new Date(622790105000L),new Date());
+			Internship internship2 = new Internship("title","entreprise","description", new Date(622790105000L),new Date());
 
 			internship.setStudent(student);
 			internship.setSupervisor(supervisor);
 
-			internRep.save(internship);
+			internship2.setSupervisor(supervisor);
+			internship2.setStudent(student);
+
+
+			internRep.save(internship) ;
+			internRep.save(internship2) ;
 
 			//Internship offer
 			InternshipOffer internshipOffer = new InternshipOffer("Stage AI","IBM","in_progress","this is a description", student);

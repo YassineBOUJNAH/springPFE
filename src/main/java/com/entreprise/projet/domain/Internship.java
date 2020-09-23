@@ -42,9 +42,10 @@ public class Internship {
 
     //meetings list
 
-    @OneToMany(mappedBy = "internship" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<meeting> meetingtList ;
+    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    @JoinColumn(name = "meeting_id" , referencedColumnName = "id")
+    private meeting meeting ;
+
 
     public Internship(String title, String entreprise, String description, Date startdate, Date lasttdate) {
 
@@ -57,6 +58,13 @@ public class Internship {
 
     public Internship () {
         
+    }
+    public void setMeeting(com.entreprise.projet.domain.meeting meeting) {
+        this.meeting = meeting;
+    }
+
+    public com.entreprise.projet.domain.meeting getMeeting() {
+        return meeting;
     }
 
 
@@ -111,19 +119,9 @@ public class Internship {
                 ", description='" + description + '\'' +
                 ", startdate=" + startdate +
                 ", lasttdate=" + lasttdate +
-                ", reportList=" + reportList +
-                ", meetingtList=" + meetingtList +
                 '}';
     }
 
-   public void addReport(report rep){
-       reportList.add(rep) ;
-
-   }
-
-   public void addMeeting(meeting met) {
-        meetingtList.add(met) ;
-   }
 
     public void setSupervisor(Supervisor supervisor) {
         this.supervisor = supervisor;
@@ -145,7 +143,4 @@ public class Internship {
         return reportList;
     }
 
-    public List<meeting> getMeetingtList() {
-        return meetingtList;
-    }
 }
