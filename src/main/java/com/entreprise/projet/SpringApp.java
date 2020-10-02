@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SpringBootApplication
@@ -29,6 +30,9 @@ public class SpringApp {
 
 	@Autowired
 	private SupervisorRepo supervisorRepo ;
+
+	@Autowired
+	private PostRepository postRepository ;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApp.class, args);
@@ -72,6 +76,9 @@ public class SpringApp {
 
 			internRep.save(internship) ;
 			internRep.save(internship2) ;
+
+
+
 
 
 		};
