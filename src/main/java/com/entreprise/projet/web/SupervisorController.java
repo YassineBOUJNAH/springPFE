@@ -1,13 +1,9 @@
 package com.entreprise.projet.web;
 
-import com.entreprise.projet.domain.Internship;
-import com.entreprise.projet.domain.SupervisorRepo;
-import com.entreprise.projet.domain.internshipRepository;
+import com.entreprise.projet.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +20,16 @@ public class SupervisorController {
     @GetMapping("/supervisor/{id}/internships")
     public List<Internship> getInternshipBySupervisor(@PathVariable(required = false) Long id) {
         return internshipRepository.findBySupervisor(id) ;
+    }
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @PostMapping("/addsupervisor")
+    public Utilisateur newUser(@RequestBody Supervisor newUser) {
+        String password = passwordEncoder.encode(newUser.getPassword()) ;
+        newUser.setPassword(password);
+        return repo.save(newUser);
     }
 
 }
