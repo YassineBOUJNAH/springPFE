@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SpringBootApplication
@@ -29,6 +30,9 @@ public class SpringApp {
 
 	@Autowired
 	private SupervisorRepo supervisorRepo ;
+
+	@Autowired
+	private PostRepository postRepository ;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApp.class, args);
@@ -51,25 +55,30 @@ public class SpringApp {
 			urepository.save(new Supervisor("supervi", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR","dd"));
 
 			//Internship
-			Student student = new Student("student", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "tt","gz","sj","jz","jz","hz","dd") ;
+			Student student = new Student("mohammed", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "talhimohammed@507@gmail.com","mohammed","talhi","jz","jz","hz","dd") ;
+			Student student1 = new Student("ilyass", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "ilyas@507@gmail.com","ilyas","targhi","jz","jz","hz","dd") ;
 			Supervisor supervisor = new Supervisor("supervisor", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR" , "tt","gz","sj","jz","jz","hz","dd");
 
 			studentRepo.save(student);
+			studentRepo.save(student1);
 			supervisorRepo.save(supervisor);
 
            //this task will be performed by the admin
-			Internship internship = new Internship("title","entreprise","description", new Date(622790105000L),new Date());
-			Internship internship2 = new Internship("title","entreprise","description", new Date(622790105000L),new Date());
+			Internship internship = new Internship("title1","entreprise1","description1", new Date(622790105000L),new Date());
+			Internship internship2 = new Internship("title2","entreprise2","description2", new Date(622790105000L),new Date());
 
 			internship.setStudent(student);
 			internship.setSupervisor(supervisor);
 
 			internship2.setSupervisor(supervisor);
-			internship2.setStudent(student);
+			internship2.setStudent(student1);
 
 
 			internRep.save(internship) ;
 			internRep.save(internship2) ;
+
+
+
 
 
 		};

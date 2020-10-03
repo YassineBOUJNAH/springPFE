@@ -14,31 +14,17 @@ public class meeting {
     @NonNull
     private String description ;
     @NonNull
-    private String date ;
-    @NonNull
-    private String time ;
+    private String datetime;
     @NonNull
     private String place ;
 
-
-
-    public meeting(@NonNull String description, @NonNull String date, @NonNull String time, @NonNull String place) {
+    public meeting(@NonNull String description, @NonNull String datetime, @NonNull String place) {
         this.description = description;
-        this.date = date;
-        this.time = time;
+        this.datetime = datetime;
         this.place = place;
     }
 
     public meeting() {
-    }
-
-    @NonNull
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(@NonNull String time) {
-        this.time = time;
     }
 
     public Long getId() {
@@ -55,12 +41,12 @@ public class meeting {
     }
 
     @NonNull
-    public String getDate() {
-        return date;
+    public String getDatetime() {
+        return datetime;
     }
 
-    public void setDate(@NonNull String date) {
-        this.date = date;
+    public void setDatetime(@NonNull String datetime) {
+        this.datetime = datetime;
     }
 
     @NonNull
@@ -77,7 +63,7 @@ public class meeting {
         return "meeting{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", date=" + date +
+                ", date=" + datetime +
                 ", place='" + place + '\'' +
                 '}';
     }

@@ -17,6 +17,9 @@ public class SupervisorController {
     @Autowired
     private internshipRepository internshipRepository ;
 
+    @Autowired
+    private  PostRepository postRepository ;
+
     @GetMapping("/supervisor/{id}/internships")
     public List<Internship> getInternshipBySupervisor(@PathVariable(required = false) Long id) {
         return internshipRepository.findBySupervisor(id) ;
@@ -31,5 +34,16 @@ public class SupervisorController {
         newUser.setPassword(password);
         return repo.save(newUser);
     }
+
+    @RequestMapping("/supervisors")
+    public Iterable<Supervisor> getAllSupervisors() {
+        return  repo.findAll() ;
+    }
+
+    @RequestMapping("/supervisors/{id}/posts")
+    public Iterable<Post> getPostsBySupervisor( @PathVariable Long id) {
+        return  postRepository.findAllBySupervisor_idOrderByPostedAtDesc(id);
+    }
+
 
 }
