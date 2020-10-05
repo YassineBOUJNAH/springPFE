@@ -1,17 +1,16 @@
 package com.entreprise.projet.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RepositoryRestResource
-public interface SupervisorRepo  extends CrudRepository<Supervisor, Long> {
+public interface PostRepository extends CrudRepository < Post , Long > {
 
-    Utilisateur findByUsername(String username);
-    Optional<Supervisor> findById(Long Id) ;
+ List<Post> findAllBySupervisor_idOrderByPostedAtDesc(Long id) ;
 
-}
+
+ }

@@ -37,6 +37,16 @@ public class InternshipController {
         });
     }
 
+    @PutMapping("internships/cancelmeeting/{id}")
+    public Internship cancelMeeting ( @PathVariable Long id ) {
+        return intern.findById(id).map(internship1 -> {
+            internship1.setMeeting(null);
+            return intern.save(internship1);
+        }).orElseGet(() -> {
+            return null ;
+        });
+    }
+
 
 
 
