@@ -17,6 +17,18 @@ public class InternshipOffer {
     private String state = "in progress";
     @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
+    private String studentUsername;
+
+    private String response;
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student")
@@ -24,6 +36,30 @@ public class InternshipOffer {
 
     public InternshipOffer() {
     }
+
+    public String getStudentUsername() {
+        return studentUsername;
+    }
+
+    public void setStudentUsername(String studentUsername) {
+        this.studentUsername = studentUsername;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public InternshipOffer(String title, String entreprise, String state, String description, String studentUsername, Student student) {
+        this.title = title;
+        this.entreprise = entreprise;
+        this.state = state;
+        this.description = description;
+        this.student = student;
+        this.studentUsername = studentUsername;   }
 
     public Long getId() {
         return id;

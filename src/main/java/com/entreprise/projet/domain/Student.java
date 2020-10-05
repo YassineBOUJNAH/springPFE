@@ -1,6 +1,7 @@
 package com.entreprise.projet.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ public class Student extends Utilisateur{
     private static final long serialVersionUID = 1L;
 
     private String cne;
+
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy="student")
+    private List<InternshipOffer> internshipOffers;
 
     public static long getSerialVersionUID() { return serialVersionUID;  }
 

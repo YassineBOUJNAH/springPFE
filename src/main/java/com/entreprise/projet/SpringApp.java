@@ -24,6 +24,8 @@ public class SpringApp {
 
 	@Autowired
 	private internshipRepository internRep ;
+	@Autowired
+	private InternshipOfferRepo internshipOfferRepo ;
 
 	@Autowired
 	private StudentRepo studentRepo ;
@@ -77,9 +79,12 @@ public class SpringApp {
 			internRep.save(internship) ;
 			internRep.save(internship2) ;
 
+			internshipOfferRepo.save(new InternshipOffer("full stack developer", "IBM", "inProgress", "full stack developer Intership at IBM","Yassine",student));
+			internshipOfferRepo.save(new InternshipOffer("Machine learning", "GOOGLE", "inProgress", "Machine learning developer with at Google","badre",student1));
 
-
-
+			internshipOfferRepo.save(new InternshipOffer("full stack developer", "BMCE BANK", "inProgress", "full stack developer Intership at BMCE BANK","ilyass",student));
+			internshipOfferRepo.save(new InternshipOffer("Data scientist", "Pornhub", "inProgress", "Data Scientist at Pornhub","Talhi",student1));
+			internshipOfferRepo.save(new InternshipOffer("Big data", "ENSIAS", "refused", "Big data in ensias","Talhi",student1));
 
 		};
 	}	
