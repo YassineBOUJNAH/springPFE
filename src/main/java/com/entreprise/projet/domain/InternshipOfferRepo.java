@@ -6,6 +6,7 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface InternshipOfferRepo extends CrudRepository<InternshipOffer, Long> {
-    List<Internship> findByStudent(Long id) ;
+    List<InternshipOffer> findByStudentId(Long studentId) ;
+    List<InternshipOffer> findByState(String state);
 
 }

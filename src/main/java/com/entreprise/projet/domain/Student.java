@@ -15,6 +15,7 @@ public class Student extends Utilisateur{
     private String cne;
 
     @OneToMany(cascade = CascadeType.MERGE, mappedBy="student")
+    @JsonIgnore
     private List<InternshipOffer> internshipOffers;
 
     public static long getSerialVersionUID() { return serialVersionUID;  }
