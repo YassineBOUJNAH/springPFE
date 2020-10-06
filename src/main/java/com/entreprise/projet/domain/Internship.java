@@ -24,7 +24,10 @@ public class Internship {
     @Column(nullable = false)
     private Date lasttdate ;
 
-    //supervisor
+    public void setReportList(List<report> reportList) {
+        this.reportList = reportList;
+    }
+//supervisor
 
     @ManyToOne
     @JoinColumn(name ="supervisor_id" , referencedColumnName = "id")
@@ -50,10 +53,20 @@ public class Internship {
     public Internship(String title, String entreprise, String description, Date startdate, Date lasttdate) {
 
         this.title = title;
-        Entreprise = entreprise;
+        this.Entreprise = entreprise;
         this.description = description;
         this.startdate = startdate;
         this.lasttdate = lasttdate;
+    }
+
+    public Internship(String title, String entreprise, String description, Date startdate, Date lasttdate, Supervisor supervisor, Student student) {
+        this.title = title;
+        this.Entreprise = entreprise;
+        this.description = description;
+        this.startdate = startdate;
+        this.lasttdate = lasttdate;
+        this.supervisor = supervisor;
+        this.student = student;
     }
 
     public Internship () {

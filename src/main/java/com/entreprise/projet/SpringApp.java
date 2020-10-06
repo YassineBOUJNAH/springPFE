@@ -57,12 +57,18 @@ public class SpringApp {
 			urepository.save(new Supervisor("supervi", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR","dd"));
 
 			//Internship
-			Student student = new Student("mohammed", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "talhimohammed@507@gmail.com","mohammed","talhi","jz","jz","hz","dd") ;
+			Student student = new Student("talhi", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "talhimohammed@507@gmail.com","mohammed","talhi","jz","jz","hz","dd") ;
 			Student student1 = new Student("ilyass", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "ilyas@507@gmail.com","ilyas","targhi","jz","jz","hz","dd") ;
+			Student student2 = new Student("yassine", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "ilyas@507@gmail.com","ilyas","targhi","jz","jz","hz","dd") ;
+			Student student3 = new Student("badre", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "ilyas@507@gmail.com","ilyas","targhi","jz","jz","hz","dd") ;
+
 			Supervisor supervisor = new Supervisor("supervisor", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR" , "tt","gz","sj","jz","jz","hz","dd");
 
 			studentRepo.save(student);
 			studentRepo.save(student1);
+			studentRepo.save(student2);
+			studentRepo.save(student3);
+
 			supervisorRepo.save(supervisor);
 
            //this task will be performed by the admin
@@ -79,12 +85,12 @@ public class SpringApp {
 			internRep.save(internship) ;
 			internRep.save(internship2) ;
 
-			internshipOfferRepo.save(new InternshipOffer("full stack developer", "IBM", "inProgress", "full stack developer Intership at IBM","Yassine",student,new Date(622790105000L),new Date()));
+			internshipOfferRepo.save(new InternshipOffer("full stack developer", "IBM", "inProgress", "full stack developer Intership at IBM","yassine",student,new Date(622790105000L),new Date()));
 			internshipOfferRepo.save(new InternshipOffer("Machine learning", "GOOGLE", "inProgress", "Machine learning developer with at Google","badre",student1,new Date(622790105000L),new Date()));
 
 			internshipOfferRepo.save(new InternshipOffer("full stack developer", "BMCE BANK", "inProgress", "full stack developer Intership at BMCE BANK","ilyass",student,new Date(622790105000L),new Date()));
 			internshipOfferRepo.save(new InternshipOffer("Data scientist", "Pornhub", "inProgress", "Data Scientist at Pornhub","Talhi",student1,new Date(622790105000L),new Date()));
-			internshipOfferRepo.save(new InternshipOffer("Big data", "ENSIAS", "refused", "Big data in ensias","Talhi",student1,new Date(622790105000L),new Date()));
+			internshipOfferRepo.save(new InternshipOffer("Big data", "ENSIAS", "refused", "Big data in ensias","talhi",student1,new Date(622790105000L),new Date()));
 
 		};
 	}	

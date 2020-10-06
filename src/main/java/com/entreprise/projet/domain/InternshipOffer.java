@@ -85,6 +85,8 @@ public class InternshipOffer {
         this.startdate = startdate;
     }
 
+
+
     public Long getId() {
         return id;
     }
