@@ -14,4 +14,5 @@ public interface internshipRepository extends CrudRepository< Internship , Long>
      List<Internship> findBySupervisor(Long supervisor_id) ;
 
      Optional<Internship> findById(Long Id) ;
+     List<Internship> findByStudentId(Long studentId) ;
 }

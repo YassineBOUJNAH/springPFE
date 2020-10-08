@@ -60,4 +60,5 @@ public class InternshipOfferController {
     public void deleteInternshipOffer(@PathVariable long id) {
         internshipOfferRepo.deleteById(id);
     }
+
 }

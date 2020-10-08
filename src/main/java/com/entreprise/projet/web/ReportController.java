@@ -62,4 +62,9 @@ public class ReportController {
         return ResponseEntity.ok(p);
 
     }
+
+    @DeleteMapping("/reports/{id}")
+    public void deleteReportById( @PathVariable Long id){
+        reportRepository.deleteById(id);
+    }
 }
