@@ -14,15 +14,21 @@ public class InternshipOfferController {
     private InternshipOfferRepo internshipOfferRepo;
     @Autowired
     private StudentRepo studentRepo;
+    @Autowired
+    private internshipRepository internshipRepo;
 
     //Fetch all the internship offers
     @RequestMapping("/internshipoffers")
     public Iterable<InternshipOffer> getAllInternshipOffer() {return  internshipOfferRepo.findAll();}
 
     //Fetch internships by student
-    /*
-    * Cause 500 INTERNAL SERVER ERROR !
-    * */
+    @GetMapping("/internships/student/{id}")
+    @ResponseBody
+    public List<Internship> findInternshipByStudentId(@PathVariable(required = false) Long id) {
+        return internshipRepo.findByStudentId((long) id);
+    }
+
+    //Fetch internship offers by student
     @GetMapping("/internshipoffers/student/{id}")
     @ResponseBody
     public List<InternshipOffer> findInternshipOfferByStudentId(@PathVariable(required = false) Long id) {
@@ -37,33 +43,17 @@ public class InternshipOfferController {
 
     //Add an inernship offer
     @PostMapping("/internshipoffers")
-    public InternshipOffer addInternshipOffer(@RequestParam(value = "studentId") Long studentId,
+    @ResponseBody
+    public ResponseEntity<InternshipOffer> addInternshipOffer(@RequestParam(value = "studentId") Long studentId,
                                               @RequestBody InternshipOffer internshipOffer
                                               ) {
         Student studentX = studentRepo.findById(studentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found :: " + studentId));
         studentX.setId(studentId);
-        //studentX.setUsername(student.getUsername());
-        //studentX.setEmail(student.getEmail());
         internshipOffer.setStudent(studentX);
-        return internshipOfferRepo.save(internshipOffer);
-        //return ResponseEntity.ok(internshipOffer);
+        internshipOfferRepo.save(internshipOffer);
+        return ResponseEntity.ok(internshipOffer);
     }
-    /*
-    //Add an inernship offer
-    @PostMapping("/internshipoffers/student/{studentId}")
-    public InternshipOffer addInternshipOffer(@PathVariable(value = "id") Long studentId,
-                                              @RequestBody InternshipOffer internshipOffer) {
-        Student student = studentRepo.findById(studentId)
-                .orElseThrow(() -> new ResourceNotFoundException("Instructor not found :: " + instructorId));
-        user.setFirstName(userDetails.getFirstName());
-        user.setLastName(userDetails.getLastName());
-        user.setEmail(userDetails.getEmail());
-        final Instructor updatedUser = instructorRepository.save(user);
-        return ResponseEntity.ok(updatedUser);
-    }
-    */
-
 
     //delete an internship offer
     @DeleteMapping("/internshipoffers/delete/{id}")
