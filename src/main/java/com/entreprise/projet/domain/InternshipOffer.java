@@ -20,6 +20,26 @@ public class InternshipOffer {
     private String description;
     @Column(nullable = false)
     private String studentUsername;
+    @Column(nullable = false)
+    private Date startdate ;
+    @Column(nullable = false)
+    private Date lasttdate ;
+
+    public Date getStartdate() {
+        return startdate;
+    }
+
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
+    }
+
+    public Date getLasttdate() {
+        return lasttdate;
+    }
+
+    public void setLasttdate(Date lasttdate) {
+        this.lasttdate = lasttdate;
+    }
 
     private String response;
 
@@ -69,13 +89,18 @@ public class InternshipOffer {
         this.student = student;
     }
 
-    public InternshipOffer(String title, String entreprise, String state, String description, String studentUsername, Student student) {
+    public InternshipOffer(String title, String entreprise, String state, String description, String studentUsername, Student student,Date startdate,Date lasttdate) {
         this.title = title;
         this.entreprise = entreprise;
         this.state = state;
         this.description = description;
         this.student = student;
-        this.studentUsername = studentUsername;   }
+        this.studentUsername = studentUsername;
+        this.lasttdate = lasttdate;
+        this.startdate = startdate;
+    }
+
+
 
     public Long getId() {
         return id;

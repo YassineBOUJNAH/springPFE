@@ -24,7 +24,10 @@ public class Internship {
     @Column(nullable = false)
     private Date lasttdate ;
 
-    //supervisor
+    public void setReportList(List<report> reportList) {
+        this.reportList = reportList;
+    }
+//supervisor
 
     @ManyToOne
     @JoinColumn(name ="supervisor_id" , referencedColumnName = "id")
@@ -36,9 +39,9 @@ public class Internship {
     private Student student ;
 
     //reports list
-    @OneToMany(mappedBy = "internship", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<report> reportList ;
+    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    @JoinColumn(name = "report_id",referencedColumnName = "id")
+    private report reportfile ;
 
     //meetings list
 
@@ -50,15 +53,38 @@ public class Internship {
     public Internship(String title, String entreprise, String description, Date startdate, Date lasttdate) {
 
         this.title = title;
-        Entreprise = entreprise;
+        this.Entreprise = entreprise;
         this.description = description;
         this.startdate = startdate;
         this.lasttdate = lasttdate;
     }
 
+    public Internship(String title, String entreprise, String description, Date startdate, Date lasttdate, Supervisor supervisor, Student student) {
+        this.title = title;
+        this.Entreprise = entreprise;
+        this.description = description;
+        this.startdate = startdate;
+        this.lasttdate = lasttdate;
+        this.supervisor = supervisor;
+        this.student = student;
+    }
+
     public Internship () {
         
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public report getReportfile() {
+        return reportfile;
+    }
+
+    public void setReportfile(report reportfile) {
+        this.reportfile = reportfile;
+    }
+
     public void setMeeting(com.entreprise.projet.domain.meeting meeting) {
         this.meeting = meeting;
     }
@@ -142,8 +168,6 @@ public class Internship {
         return student;
     }
 
-    public List<report> getReportList() {
-        return reportList;
-    }
+
 
 }
