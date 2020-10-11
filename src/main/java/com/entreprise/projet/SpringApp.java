@@ -81,7 +81,7 @@ public class SpringApp {
 
 			internship2.setSupervisor(supervisor);
 			internship2.setStudent(student1);
-
+//
 
 			internRep.save(internship) ;
 			internRep.save(internship2) ;
