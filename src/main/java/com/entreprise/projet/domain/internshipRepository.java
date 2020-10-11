@@ -14,4 +14,11 @@ public interface internshipRepository extends CrudRepository< Internship , Long>
      List<Internship> findBySupervisor(Long supervisor_id) ;
 
      Optional<Internship> findById(Long Id) ;
+
+     @Query(value = "SELECT student_id FROM internship u  WHERE u.supervisor_id = ?1 " , nativeQuery = true)
+     List<Student> findStudent_idBySupervisor_id(Long Id)  ;
+
+
+
+
 }

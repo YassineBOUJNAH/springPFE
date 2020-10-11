@@ -10,7 +10,6 @@ import java.util.List;
 @RepositoryRestResource
 public interface PostRepository extends CrudRepository < Post , Long > {
 
- List<Post> findAllBySupervisor_idOrderByPostedAtDesc(Long id) ;
-
+        List<Post> findAllBySupervisor_idOrderByPostedAtDesc(Long id);
 
  }

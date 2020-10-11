@@ -55,7 +55,7 @@ public class SpringApp {
 			urepository.save(new Supervisor("supervi", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR","dd"));
 
 			//Internship
-			Student student = new Student("mohammed", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "talhimohammed@507@gmail.com","mohammed","talhi","jz","jz","hz","dd") ;
+			Student student = new Student("mohammed", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "talhimohammed507@gmail.com","mohammed","talhi","jz","jz","hz","dd") ;
 			Student student1 = new Student("ilyass", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT" , "ilyas@507@gmail.com","ilyas","targhi","jz","jz","hz","dd") ;
 			Supervisor supervisor = new Supervisor("supervisor", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR" , "tt","gz","sj","jz","jz","hz","dd");
 
