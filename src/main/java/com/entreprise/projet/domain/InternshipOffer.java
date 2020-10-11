@@ -15,7 +15,7 @@ public class InternshipOffer {
     private String title;
     @Column(nullable = false)
     private String entreprise;
-    private String state = "in progress";
+    private String state = "inProgress";
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
