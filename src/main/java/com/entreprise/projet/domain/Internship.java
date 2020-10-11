@@ -39,9 +39,9 @@ public class Internship {
     private Student student ;
 
     //reports list
-    @OneToMany(mappedBy = "internship", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<report> reportList ;
+    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    @JoinColumn(name = "report_id",referencedColumnName = "id")
+    private report reportfile ;
 
     //meetings list
 
@@ -72,6 +72,19 @@ public class Internship {
     public Internship () {
         
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public report getReportfile() {
+        return reportfile;
+    }
+
+    public void setReportfile(report reportfile) {
+        this.reportfile = reportfile;
+    }
+
     public void setMeeting(com.entreprise.projet.domain.meeting meeting) {
         this.meeting = meeting;
     }
@@ -152,8 +165,6 @@ public class Internship {
         return student;
     }
 
-    public List<report> getReportList() {
-        return reportList;
-    }
+
 
 }

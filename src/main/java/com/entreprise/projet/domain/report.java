@@ -2,6 +2,8 @@ package com.entreprise.projet.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
 public class report {
@@ -12,54 +14,62 @@ public class report {
     private Long id  ;
 
     @NotNull
-    private String version;
+    private String type ;
 
     @NotNull
-    private String content ;
+    private String description ;
 
-    @ManyToOne(fetch = FetchType.LAZY )
-    @JoinColumn(name="internship_id", nullable=false )
-    private Internship internship ;
+    @Lob
+    private byte[] data ;
 
     public report () {
         super() ;
     }
 
 
-    public report(@NotNull String version, @NotNull String content) {
-        super() ;
-        this.version = version;
-        this.content = content;
+    public report(@NotNull String description , @NotNull byte[] data , @NotNull String type ) {
+         super() ;
+         this.description = description ;
+         this.data = data ;
+         this.type = type ;
     }
 
-    public String getVersion() {
-        return version;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public String getType() {
+        return type;
     }
 
-    public String getContent() {
-        return content;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public String getDescription() {
+        return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 
     public Long getId() {
         return id;
     }
-    @Override
-    public String toString() {
-        return "report{" +
-                "id=" + id +
-                ", version='" + version + '\'' +
-                ", content='" + content + '\'' +
-                ", internship=" + internship +
-                '}';
-    }
+
+
+
+
+
+
 
 }

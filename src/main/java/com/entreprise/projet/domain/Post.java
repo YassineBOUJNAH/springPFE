@@ -6,11 +6,10 @@ import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.Objects;
+import javax.persistence.* ;
+import javax.validation.constraints.NotNull ;
+import java.sql.Timestamp ;
+import java.util.Objects ;
 
 @Entity
 public class Post {
@@ -45,9 +44,10 @@ public class Post {
 
 
     public Post(@NotNull Timestamp postedAt, @NotNull String content, @NotNull String description) {
-        this.postedAt = postedAt;
-        Content = content;
-        Description = description;
+
+        this.postedAt = postedAt ;
+        Content = content ;
+        Description = description ;
 
     }
 

@@ -1,6 +1,7 @@
 package com.entreprise.projet.web;
 
 import com.entreprise.projet.domain.*;
+import com.entreprise.projet.service.emailService;
 import net.bytebuddy.asm.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,10 +13,12 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -29,6 +32,13 @@ public class PostController  {
     @Autowired
     private SupervisorRepo supervisorRepo ;
 
+    @Autowired
+    private emailService emailService ;
+
+
+    @Autowired
+    private  internshipRepository internshipRepository ;
+
 
     @RequestMapping("/posts")
     public Iterable<Post> getAllPosts() {
@@ -41,11 +51,12 @@ public class PostController  {
          Supervisor supervisor = supervisorRepo.findById(id_sup).orElseThrow(() -> new ResourceNotFoundException("Supervisor not found for this id :" + id_sup));
           Post p = new Post();
           p.setPostedAt(new Timestamp(new Date().getTime()));
-
           supervisor.setId(id_sup);
           p.setSupervisor(supervisor);
           p.setContent(content);
           p.setDescription(description);
+
+
 
           if (file != null) {
               String filename = StringUtils.cleanPath(file.getOriginalFilename());
@@ -56,6 +67,21 @@ public class PostController  {
           }
 
           postRepository.save(p);
+
+
+
+         List<Internship> internships =  internshipRepository.findBySupervisor(id_sup);
+
+        internships.forEach( internship -> {
+            try {
+                emailService.sendmail(internship.getStudent().getEmail(),"NEW POST" , "Your supervisor just published a post");
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
 
          return ResponseEntity.ok(p);
 
