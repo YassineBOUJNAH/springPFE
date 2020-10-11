@@ -20,7 +20,6 @@ public class InternshipController {
     @RequestMapping("/internships")
     public Iterable<Internship> getAllInternship() {
         return  intern.findAll() ;
-
     }
 
     @GetMapping("/internships/sup/{id}")

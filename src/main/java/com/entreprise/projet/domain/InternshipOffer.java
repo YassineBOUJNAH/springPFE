@@ -1,6 +1,7 @@
 package com.entreprise.projet.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class InternshipOffer {
@@ -17,6 +18,38 @@ public class InternshipOffer {
     private String state = "in progress";
     @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
+    private String studentUsername;
+    @Column(nullable = false)
+    private Date startdate ;
+    @Column(nullable = false)
+    private Date lasttdate ;
+
+    public Date getStartdate() {
+        return startdate;
+    }
+
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
+    }
+
+    public Date getLasttdate() {
+        return lasttdate;
+    }
+
+    public void setLasttdate(Date lasttdate) {
+        this.lasttdate = lasttdate;
+    }
+
+    private String response;
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student")
@@ -24,6 +57,35 @@ public class InternshipOffer {
 
     public InternshipOffer() {
     }
+
+    public String getStudentUsername() {
+        return studentUsername;
+    }
+
+    public void setStudentUsername(String studentUsername) {
+        this.studentUsername = studentUsername;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public InternshipOffer(String title, String entreprise, String state, String description, String studentUsername, Student student,Date startdate,Date lasttdate) {
+        this.title = title;
+        this.entreprise = entreprise;
+        this.state = state;
+        this.description = description;
+        this.student = student;
+        this.studentUsername = studentUsername;
+        this.lasttdate = lasttdate;
+        this.startdate = startdate;
+    }
+
+
 
     public Long getId() {
         return id;
