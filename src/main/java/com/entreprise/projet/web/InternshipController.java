@@ -83,6 +83,24 @@ public class InternshipController {
         });
     }
 
+    @PostMapping(value = "internships/{id}/setreport" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public Internship addReport (@RequestParam(value = "file") MultipartFile report,@RequestParam(value = "description") String description, @PathVariable Long id ) {
+        return intern.findById(id).map(internship1 -> {
+            report r = new report();
+            try {
+                r.setData(report.getBytes());
+                r.setType(report.getContentType());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            r.setDescription(description);
+            internship1.setReportfile(r);
+            return intern.save(internship1);
+        }).orElseGet(() -> {
+            return null ;
+        });
+    }
+
 
 
 

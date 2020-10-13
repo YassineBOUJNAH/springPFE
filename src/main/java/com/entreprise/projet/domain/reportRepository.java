@@ -8,5 +8,7 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface reportRepository extends CrudRepository< report, Long> {
-    List<report> findAllByInternshipId(Long id) ;
+
+    //List<report> findAllByInternshipId(Long id) ;
+
 }

@@ -24,9 +24,12 @@ public class Internship {
     @Column(nullable = false)
     private Date lasttdate ;
 
+    /*
     public void setReportList(List<report> reportList) {
         this.reportList = reportList;
     }
+    */
+
 //supervisor
 
     @ManyToOne
@@ -91,10 +94,6 @@ public class Internship {
 
     public com.entreprise.projet.domain.meeting getMeeting() {
         return meeting;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {
