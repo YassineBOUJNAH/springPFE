@@ -12,11 +12,6 @@ import java.util.Date;
 
 @SpringBootApplication
 public class SpringApp {
-	@Autowired	
-	private CarRepository repository;
-
-	@Autowired	
-	private OwnerRepository orepository;
 
 	@Autowired	
 	private UserRepository urepository;
@@ -46,13 +41,7 @@ public class SpringApp {
 			Owner owner1 = new Owner("John" , "Johnson");
 
 			Owner owner2 = new Owner("Mary" , "Robinson");
-			orepository.save(owner1);
-			orepository.save(owner2);
-			repository.save(new Car("Ford", "Mustang", "Red", "ADF-1121", 2017, 59000, owner1));
-			repository.save(new Car("Nissan", "Leaf", "White", "SSJ-3002", 2014, 29000, owner2));
-			repository.save(new Car("Toyota", "Prius", "Silver", "KKO-0212", 2018, 39000, owner2));
-			
-			urepository.save(new Student("user", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "STUDENT","dd"));
+
 			urepository.save(new Utilisateur("admin","$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42" , "ADMIN"));
 			urepository.save(new Supervisor("supervi", "$2a$10$g0pWFlU8Wfzvm5oXr7OzHewreRBvJfnlNuaX.xM9U7lqYT1eFDY42", "SUPERVISOR","dd"));
 
@@ -80,7 +69,7 @@ public class SpringApp {
 
 			internship2.setSupervisor(supervisor);
 			internship2.setStudent(student1);
-//
+///////////
 
 			internRep.save(internship) ;
 			internRep.save(internship2) ;
