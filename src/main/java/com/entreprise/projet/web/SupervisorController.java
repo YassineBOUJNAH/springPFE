@@ -23,7 +23,7 @@ public class SupervisorController {
 
 
 
-    @GetMapping("/supervisor/{id}/internships")
+    @RequestMapping("/supervisor/{id}/internships")
     public List<Internship> getInternshipBySupervisor(@PathVariable(required = false) Long id) {
         return internshipRepository.findBySupervisor(id) ;
     }
